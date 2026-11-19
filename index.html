@@ -1723,7 +1723,7 @@ html[data-view="mobile"] .sa-bars{flex:none; height:56px}
   <b>Team:</b> SBTÜ Rocket and Propulsion Society — Esra Acar, Mustafa Alp Karaviran, Enes Aslantaş, İbrahim Şentürk, Sudem Doğan · NASA Space Apps Challenge 2026 ·
   Challenge: <i>Abandoned but not Forgotten: Storytelling about NASA's Discarded Equipment on the Moon and Mars</i><br>
   <b>Data:</b> NASA NSSDCA Master Catalog, NASA Science &amp; JPL mission pages, NASA Catalogue of Manmade Material on the Moon — source links on every hero card.<br>
-  <b>AI use:</b> The website code was drafted with help from an AI assistant and reviewed by our team. Mission banner illustrations are AI-generated and carry a visible "AI-generated" label. All facts were checked against NASA sources.<br>
+  <b>AI use:</b> The website code was drafted with help from an AI assistant and reviewed by our team. Mission banner illustrations are AI-generated. All facts were checked against NASA sources.<br>
   Hero "game ratings" are for fun and are not NASA data.
 </footer>
 
@@ -2395,7 +2395,7 @@ const TR = {
   "Source:": "Kaynak:",
   "Hero \"game ratings\" are for fun and are not NASA data.": "Kahramanların \"oyun puanları\" eğlence içindir, NASA verisi değildir.",
   "NASA NSSDCA Master Catalog, NASA Science & JPL mission pages, NASA Catalogue of Manmade Material on the Moon — source links on every hero card.": "NASA NSSDCA Ana Kataloğu, NASA Science ve JPL görev sayfaları, NASA'nın Ay'daki İnsan Yapımı Malzeme Kataloğu — her kahraman kartında kaynak linkleri var.",
-  "The website code was drafted with help from an AI assistant and reviewed by our team. Mission banner illustrations are AI-generated and carry a visible \"AI-generated\" label. All facts were checked against NASA sources.": "Sitenin kodu bir yapay zekâ asistanının yardımıyla hazırlandı ve ekibimiz tarafından kontrol edildi. Görev afişlerindeki çizimler yapay zekâ ile üretildi ve üzerlerinde görünür bir \"AI-generated\" etiketi var. Tüm bilgiler NASA kaynaklarından doğrulandı.",
+  "The website code was drafted with help from an AI assistant and reviewed by our team. Mission banner illustrations are AI-generated. All facts were checked against NASA sources.": "Sitenin kodu bir yapay zekâ asistanının yardımıyla hazırlandı ve ekibimiz tarafından kontrol edildi. Görev afişlerindeki çizimler yapay zekâ ile üretildi. Tüm bilgiler NASA kaynaklarından doğrulandı.",
   "Abandoned but not Forgotten: Storytelling about NASA's Discarded Equipment on the Moon and Mars": "Terk Edildi ama Unutulmadı: NASA'nın Ay'da ve Mars'ta Bıraktığı Ekipmanların Hikâyesi",
   "AI-generated": "AI-generated",
   "Still working!": "Hâlâ çalışıyor!",
@@ -3099,7 +3099,7 @@ function heroBanner(item) {
       <i>${catLabel}${aliveBadge}</i></div></div>`;
   return `<div class="banner">${fallback}
     ${item.image ? `<img src="${item.image}" alt="${item.name} — ${item.nick}" loading="lazy" onload="this.previousElementSibling.remove()" onerror="this.remove()">` : ""}
-    ${item.ai ? `<span class="ai-mark">AI-generated</span>` : ""}
+    
     ${item.hero && item.hero.alive ? `<span class="alive-mark">${isTr ? "Hâlâ çalışıyor!" : "Still working!"}</span>` : ""}
   </div>`;
 }
@@ -3305,7 +3305,7 @@ async function downloadLocalizedHeroCard(item) {
     rawFillText.call(c, catStr, textX + 24, pillY + 35);
   }
 
-  if (item.ai) {
+  if (false) {
     c.font = "600 16px Fredoka, system-ui, sans-serif";
     const aiTxt = "AI-generated";
     const aiW = c.measureText(aiTxt).width + 24;
@@ -3523,7 +3523,7 @@ function renderQuizResult() {
       stars.forEach(([x, y, a]) => { c.fillStyle = `rgba(255,255,255,${a})`; c.fillRect(x, y, 2, 2); });
       c.strokeStyle = col; c.lineWidth = 16; c.strokeRect(8, 8, W - 16, H - 16);
       c.textAlign = "center"; c.fillStyle = col; c.font = "700 19px Fredoka, sans-serif"; c.fillText(QUIZ_SECTION.cardHeader, W / 2, 52);
-      if (banner) { c.drawImage(banner, 36, 74, 528, 295); if (item.ai) { c.fillStyle = "rgba(0,0,0,.65)"; c.fillRect(440, 345, 118, 20); c.fillStyle = "#fff"; c.font = "600 12px sans-serif"; c.fillText("AI-generated", 499, 359); } }
+      if (banner) { c.drawImage(banner, 36, 74, 528, 295); if (false) { c.fillStyle = "rgba(0,0,0,.65)"; c.fillRect(440, 345, 118, 20); c.fillStyle = "#fff"; c.font = "600 12px sans-serif"; c.fillText("AI-generated", 499, 359); } }
       else if (ic) c.drawImage(ic, 140, 80, 320, 240);
       const name = document.getElementById("qName").value.trim() || QUIZ_SECTION.defaultName;
       c.fillStyle = "#cdd3f5"; c.font = "24px Fredoka, sans-serif"; c.fillText(QUIZ_SECTION.cardIntro.replace("{name}", name), W / 2, 418);
